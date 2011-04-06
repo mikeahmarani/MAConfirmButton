@@ -152,20 +152,21 @@
 		
 	}];
 	
-	UIColor *toggleColor = nil;
-	
-	if(disabled){
-		toggleColor = [UIColor colorWithWhite:0.85 alpha:1];
-	}else{
-		toggleColor = [UIColor colorWithRed:0.439 green:0.741 blue:0.314 alpha:1.];
-	}	
+	UIColor *greenColor = [UIColor colorWithRed:0.439 green:0.741 blue:0.314 alpha:1.];
 	
 	//Animate color change
 	CABasicAnimation *colorAnimation = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
 	colorAnimation.removedOnCompletion = NO;
 	colorAnimation.fillMode = kCAFillModeForwards;
-	colorAnimation.fromValue = selected ? (id)tint.CGColor : (id)toggleColor.CGColor;
-	colorAnimation.toValue = selected ? (id)toggleColor.CGColor : (id)tint.CGColor;
+	
+	if(disabled){
+		colorAnimation.fromValue = (id)greenColor.CGColor;
+		colorAnimation.toValue = (id)[UIColor colorWithWhite:0.85 alpha:1].CGColor;
+	}else{
+		colorAnimation.fromValue = selected ? (id)tint.CGColor : (id)greenColor.CGColor;
+		colorAnimation.toValue = selected ? (id)greenColor.CGColor : (id)tint.CGColor;	
+	}
+	
 	[colorLayer addAnimation:colorAnimation forKey:@"colorAnimation"];
 	
 	//Animate layer scaling
