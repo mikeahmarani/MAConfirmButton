@@ -1,5 +1,29 @@
 h1. MAConfirmButton
 
-MAConfirmButton is an animated subclass of UIButton that replicates and improves the behavior of the AppStore "Buy Now" buttons.
+MAConfirmButton is an animated subclass of UIButton that replicates and improves upon the behavior of the AppStore "Buy Now" buttons.
 
 h2. Usage
+
+I attempted to make this class as "drop-in" as possible with regards to it being a subclass of UIButton.
+
+h3. Init
+
+<pre>
++ (MAConfirmButton *)buttonWithTitle:(NSString *)t confirm:(NSString *)c;
++ (MAConfirmButton *)buttonWithDisabledTitle:(NSString *)t;
+</pre>
+
+h3. Anchor
+
+It is important that the anchor be set. For now, the anchor is the top right.
+
+<pre>
+- (void)setAnchor:(CGPoint)a;
+</pre>
+
+h3. Change State
+
+<pre>
+- (void)disableWithTitle:(NSString *)t;
+</pre>
+
