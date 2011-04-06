@@ -8,6 +8,16 @@ h2. Usage
 
 I attempted to make this class as "drop-in" as possible since it is, after all, a subclass of UIButton. Your project must include the **QuartzCore** framework.
 
+h3. Example
+
+<pre>
+	MAConfirmButton *confirmButton = [MAConfirmButton buttonWithTitle:@"Button Title" confirm:@"Confirm Title"];
+	[confirmButton addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];	
+	[confirmButton setTintColor:[UIColor blueColor]];
+	[confirmButton setAnchor:CGPointMake(270, 25)];	
+	[self.view addSubview:confirmButton];
+</pre>
+
 h3. Init
 
 <pre>
@@ -28,4 +38,3 @@ h3. Change State
 <pre>
 - (void)disableWithTitle:(NSString *)disabledString;
 </pre>
-
