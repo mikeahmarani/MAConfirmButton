@@ -212,11 +212,7 @@
 	
 }
 
-- (void)setSelected:(BOOL)s{
-	if(cancelOverlay){
-		[cancelOverlay removeFromSuperview];
-		cancelOverlay = nil;	
-	}	
+- (void)setSelected:(BOOL)s{	
 	selected = s;
 	[self toggle];
 }
@@ -290,6 +286,10 @@
 }
 
 - (void)cancel{
+	if(cancelOverlay){
+		[cancelOverlay removeFromSuperview];
+		cancelOverlay = nil;	
+	}	
 	self.selected = NO;
 }
 
