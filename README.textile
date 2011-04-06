@@ -17,7 +17,7 @@ h3. Init
 
 h3. Anchor
 
-It is important that the anchor be set in order to position this button. Instead of using `setFrame:` after initializing the button, simply. For now, the anchor point is the **top right** and the button is always aligned right, like the AppStore.
+It is important that the anchor be set in order to position this button in the view you are adding it to (height\width of the frame are calculated automatically). For now, the anchor point is the **top right** and the button is always aligned right, like the AppStore.
 
 <pre>
 - (void)setAnchor:(CGPoint)anchor;
