@@ -1,1 +1,20 @@
-/Sample.xcodeproj/project.xcworkspace/xcuserdata/Mike.xcuserdatad/UserInterfaceState.xcuserstate
+# Mac OS X
+*.DS_Store
+*.psd
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+
+# Generated files
+build/
+*.[oa]
+*.pyc
+
+# Backup files
+*~.nib 
