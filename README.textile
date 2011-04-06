@@ -2,6 +2,8 @@ h1. MAConfirmButton
 
 MAConfirmButton is an animated subclass of UIButton that replicates and improves upon the behavior of the AppStore "Buy Now" buttons.
 
+!http://mikeahmarani.com/github/MAConfirmButton.png!
+
 h2. Usage
 
 I attempted to make this class as "drop-in" as possible since it is, after all, a subclass of UIButton.
