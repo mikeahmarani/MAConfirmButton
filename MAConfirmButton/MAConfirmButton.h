@@ -1,9 +1,8 @@
 //
 //  MAConfirmButton.h
-//  CVM
 //
 //  Created by Mike on 11-03-28.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Mike Ahmarani. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
