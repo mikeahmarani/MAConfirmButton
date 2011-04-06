@@ -11,17 +11,14 @@
 @class MAConfirmButtonOverlay;
 
 @interface MAConfirmButton : UIButton {
+
+@private
 	BOOL selected;
 	BOOL confirmed;
 	CALayer *colorLayer;
 	CALayer *darkenLayer;
 	UIButton *cancelOverlay;
 }
-
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *confirm;
-@property (nonatomic, retain) NSString *disabled;
-@property (nonatomic, retain) UIColor *tint;
 
 + (MAConfirmButton *)buttonWithTitle:(NSString *)titleString confirm:(NSString *)confirmString;
 + (MAConfirmButton *)buttonWithDisabledTitle:(NSString *)disabledString;

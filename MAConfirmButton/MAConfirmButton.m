@@ -8,15 +8,23 @@
 #import "MAConfirmButton.h"
 #import "UIColor-Expanded.h"
 
+#define kHeight 26.0
 #define kPadding 20.0
 #define kFontSize 14.0
 
 @interface MAConfirmButton ()
+
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *confirm;
+@property (nonatomic, retain) NSString *disabled;
+@property (nonatomic, retain) UIColor *tint;
+
 - (void)toggle;
 - (void)setupLayers;
 - (void)cancel;
 - (void)lighten;
 - (void)darken;
+
 @end
 
 @implementation MAConfirmButton
@@ -42,7 +50,7 @@
 }
 
 - (id)initWithDisabledTitle:(NSString *)disabledString{
-	self = [super initWithFrame:CGRectMake(300, 150, 75, 26)];
+	self = [super initWithFrame:CGRectZero];
 	if(self != nil){
 		disabled = [disabledString retain];
 		
@@ -50,6 +58,7 @@
 		
 		CGSize size = [disabled sizeWithFont:[UIFont boldSystemFontOfSize:kFontSize]];
 		CGRect r = self.frame;
+		r.size.height = kHeight;
 		r.size.width = size.width+kPadding;
 		self.frame = r;
 		
@@ -69,7 +78,7 @@
 }
 
 - (id)initWithTitle:(NSString *)titleString confirm:(NSString *)confirmString{
-	self = [super initWithFrame:CGRectMake(300, 150, 75, 26)];
+	self = [super initWithFrame:CGRectZero];
 	if(self != nil){
 		
 		self.title = [titleString retain];
@@ -79,6 +88,7 @@
 		
 		CGSize size = [title sizeWithFont:[UIFont boldSystemFontOfSize:kFontSize]];
 		CGRect r = self.frame;
+		r.size.height = kHeight;
 		r.size.width = size.width+kPadding;
 		self.frame = r;
 		
@@ -97,7 +107,7 @@
 	return self;
 }
 
--(void)toggle{
+- (void)toggle{
 		
 	self.titleLabel.alpha = 0;
 	
@@ -201,7 +211,7 @@
 	
 }
 
--(void)setSelected:(BOOL)s{
+- (void)setSelected:(BOOL)s{
 	if(cancelOverlay){
 		[cancelOverlay removeFromSuperview];
 		cancelOverlay = nil;	
@@ -215,7 +225,7 @@
 	[self toggle];	
 }
 
--(void)setAnchor:(CGPoint)anchor{
+- (void)setAnchor:(CGPoint)anchor{
 	//Top-right point of the view (MUST BE SET LAST)
 	CGRect rect = self.frame;
 	rect.origin = CGPointMake(anchor.x - rect.size.width, anchor.y);

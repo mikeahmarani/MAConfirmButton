@@ -8,6 +8,14 @@
 #import "SampleViewController.h"
 #import "MAConfirmButton.h"
 
+@interface SampleViewController ()
+
+- (void)setupView;
+- (void)resetUI;
+- (void)confirmAction:(id)sender;
+
+@end
+
 @implementation SampleViewController
 
 - (void)dealloc{
@@ -20,6 +28,16 @@
 
 - (void)awakeFromNib{
 	
+	[self setupView];
+	
+}
+
+- (void)setupView{
+	
+	for(UIView *view in self.view.subviews){
+		[view removeFromSuperview];
+	}
+
 	MAConfirmButton *defaultButton = [MAConfirmButton buttonWithTitle:@"$9.99" confirm:@"BUY NOW"];
 	[defaultButton addTarget:self action:@selector(confirmAction:) forControlEvents:UIControlEventTouchUpInside];
 	[defaultButton setAnchor:CGPointMake(270, 50)];
@@ -35,6 +53,16 @@
 	[disabledButton setAnchor:CGPointMake(270, 150)];		
 	[self.view addSubview:disabledButton];
 	
+	resetButton = [MAConfirmButton buttonWithTitle:@"Reset" confirm:@"Are you sure?"];
+	[resetButton addTarget:self action:@selector(resetUI) forControlEvents:UIControlEventTouchUpInside];
+	[resetButton setTintColor:[UIColor colorWithRed:0.694 green:0.184 blue:0.196 alpha:1]];
+	[resetButton setAnchor:CGPointMake(270, 250)];
+	[self.view addSubview:resetButton];
+	
+}
+
+- (void)resetUI{
+	[self setupView];
 }
 
 - (void)confirmAction:(id)sender{

@@ -10,6 +10,7 @@
 @class MAConfirmButton;
 
 @interface SampleViewController : UIViewController <UIAlertViewDelegate> {
+	MAConfirmButton *resetButton;
 }
 
 @end
