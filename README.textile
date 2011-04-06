@@ -4,7 +4,7 @@ MAConfirmButton is an animated subclass of UIButton that replicates and improves
 
 h2. Usage
 
-I attempted to make this class as "drop-in" as possible with regards to it being a subclass of UIButton.
+I attempted to make this class as "drop-in" as possible since it is, after all, a subclass of UIButton.
 
 h3. Init
 

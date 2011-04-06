@@ -31,6 +31,5 @@
 - (void)disableWithTitle:(NSString *)t;
 - (void)setAnchor:(CGPoint)a;
 - (void)setTintColor:(UIColor *)color;
-- (void)toggle;
 
 @end

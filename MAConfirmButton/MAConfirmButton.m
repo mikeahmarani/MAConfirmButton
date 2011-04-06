@@ -12,6 +12,14 @@
 #define kPadding 20.0
 #define kFontSize 14.0
 
+@interface MAConfirmButton ()
+- (void)toggle;
+- (void)setupLayers;
+- (void)cancel;
+- (void)lighten;
+- (void)darken;
+@end
+
 @implementation MAConfirmButton
 
 @synthesize title, confirm, disabled, tint;
@@ -34,18 +42,60 @@
 	return button;
 }
 
--(void)setSelected:(BOOL)s{
-	if(cancelOverlay){
-		[cancelOverlay removeFromSuperview];
-		cancelOverlay = nil;	
+- (id)initWithDisabledTitle:(NSString *)t{
+	self = [super initWithFrame:CGRectMake(300, 150, 75, 26)];
+	if(self != nil){
+		disabled = [t retain];
+		
+		self.layer.needsDisplayOnBoundsChange = YES;
+		
+		CGSize size = [disabled sizeWithFont:[UIFont boldSystemFontOfSize:kFontSize]];
+		CGRect r = self.frame;
+		r.size.width = size.width+kPadding;
+		self.frame = r;
+		
+		[self setTitle:disabled forState:UIControlStateNormal];
+		[self setTitleColor:[UIColor colorWithWhite:0.6 alpha:1] forState:UIControlStateNormal];
+		[self setTitleShadowColor:[UIColor colorWithWhite:1 alpha:1] forState:UIControlStateNormal];		
+		
+		self.titleLabel.textAlignment = UITextAlignmentCenter;
+		self.titleLabel.shadowOffset = CGSizeMake(0, 1);
+		self.titleLabel.backgroundColor = [UIColor clearColor];
+		self.titleLabel.font = [UIFont boldSystemFontOfSize:kFontSize];
+		self.tint = [UIColor colorWithWhite:0.85 alpha:1];	
+		
+		[self setupLayers];
 	}	
-	selected = s;
-	[self toggle];
+	return self;	
 }
 
-- (void)disableWithTitle:(NSString *)t{
-	self.disabled = [t retain];
-	[self toggle];	
+- (id)initWithTitle:(NSString *)t confirm:(NSString *)c{
+	self = [super initWithFrame:CGRectMake(300, 150, 75, 26)];
+	if(self != nil){
+		
+		self.title = [t retain];
+		self.confirm = [c retain];
+		
+		self.layer.needsDisplayOnBoundsChange = YES;
+		
+		CGSize size = [title sizeWithFont:[UIFont boldSystemFontOfSize:kFontSize]];
+		CGRect r = self.frame;
+		r.size.width = size.width+kPadding;
+		self.frame = r;
+		
+		[self setTitle:title forState:UIControlStateNormal];
+		[self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];		
+		[self setTitleShadowColor:[UIColor colorWithWhite:0 alpha:0.5] forState:UIControlStateNormal];
+		
+		self.titleLabel.textAlignment = UITextAlignmentCenter;
+		self.titleLabel.shadowOffset = CGSizeMake(0, -1);
+		self.titleLabel.backgroundColor = [UIColor clearColor];
+		self.titleLabel.font = [UIFont boldSystemFontOfSize:kFontSize];
+		self.tint = [UIColor colorWithRed:0.220 green:0.357 blue:0.608 alpha:1];
+		
+		[self setupLayers];
+	}	
+	return self;
 }
 
 -(void)toggle{
@@ -152,60 +202,18 @@
 	
 }
 
-- (id)initWithDisabledTitle:(NSString *)t{
-	self = [super initWithFrame:CGRectMake(300, 150, 75, 26)];
-	if(self != nil){
-		disabled = [t retain];
-		
-		self.layer.needsDisplayOnBoundsChange = YES;
-		
-		CGSize size = [disabled sizeWithFont:[UIFont boldSystemFontOfSize:kFontSize]];
-		CGRect r = self.frame;
-		r.size.width = size.width+kPadding;
-		self.frame = r;
-		
-		[self setTitle:disabled forState:UIControlStateNormal];
-		[self setTitleColor:[UIColor colorWithWhite:0.6 alpha:1] forState:UIControlStateNormal];
-		[self setTitleShadowColor:[UIColor colorWithWhite:1 alpha:1] forState:UIControlStateNormal];		
-		
-		self.titleLabel.textAlignment = UITextAlignmentCenter;
-		self.titleLabel.shadowOffset = CGSizeMake(0, 1);
-		self.titleLabel.backgroundColor = [UIColor clearColor];
-		self.titleLabel.font = [UIFont boldSystemFontOfSize:kFontSize];
-		self.tint = [UIColor colorWithWhite:0.85 alpha:1];	
-		
-		[self setupLayers];
+-(void)setSelected:(BOOL)s{
+	if(cancelOverlay){
+		[cancelOverlay removeFromSuperview];
+		cancelOverlay = nil;	
 	}	
-	return self;	
+	selected = s;
+	[self toggle];
 }
 
-- (id)initWithTitle:(NSString *)t confirm:(NSString *)c{
-	self = [super initWithFrame:CGRectMake(300, 150, 75, 26)];
-	if(self != nil){
-		
-		self.title = [t retain];
-		self.confirm = [c retain];
-		
-		self.layer.needsDisplayOnBoundsChange = YES;
-		
-		CGSize size = [title sizeWithFont:[UIFont boldSystemFontOfSize:kFontSize]];
-		CGRect r = self.frame;
-		r.size.width = size.width+kPadding;
-		self.frame = r;
-		
-		[self setTitle:title forState:UIControlStateNormal];
-		[self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];		
-		[self setTitleShadowColor:[UIColor colorWithWhite:0 alpha:0.5] forState:UIControlStateNormal];
-		
-		self.titleLabel.textAlignment = UITextAlignmentCenter;
-		self.titleLabel.shadowOffset = CGSizeMake(0, -1);
-		self.titleLabel.backgroundColor = [UIColor clearColor];
-		self.titleLabel.font = [UIFont boldSystemFontOfSize:kFontSize];
-		self.tint = [UIColor colorWithRed:0.220 green:0.357 blue:0.608 alpha:1];
-		
-		[self setupLayers];
-	}	
-	return self;
+- (void)disableWithTitle:(NSString *)t{
+	self.disabled = [t retain];
+	[self toggle];	
 }
 
 -(void)setAnchor:(CGPoint)anchor{
