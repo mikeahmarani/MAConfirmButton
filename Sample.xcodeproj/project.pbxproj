@@ -61,7 +61,6 @@
 		270FBCAB134BA43800EEA99B = {
 			isa = PBXGroup;
 			children = (
-				27913F50134BA4E700FBEB69 /* QuartzCore.framework */,
 				270FBCC0134BA43800EEA99B /* Sample */,
 				270FBCB9134BA43800EEA99B /* Frameworks */,
 				270FBCB7134BA43800EEA99B /* Products */,
@@ -79,6 +78,7 @@
 		270FBCB9134BA43800EEA99B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27913F50134BA4E700FBEB69 /* QuartzCore.framework */,
 				270FBCBA134BA43800EEA99B /* UIKit.framework */,
 				270FBCBC134BA43800EEA99B /* Foundation.framework */,
 				270FBCBE134BA43800EEA99B /* CoreGraphics.framework */,

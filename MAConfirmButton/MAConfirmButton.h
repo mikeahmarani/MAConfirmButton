@@ -23,12 +23,12 @@
 @property (nonatomic, retain) NSString *disabled;
 @property (nonatomic, retain) UIColor *tint;
 
-+ (MAConfirmButton *)buttonWithTitle:(NSString *)t confirm:(NSString *)c;
-+ (MAConfirmButton *)buttonWithDisabledTitle:(NSString *)t;
-- (id)initWithTitle:(NSString *)t confirm:(NSString *)c;
-- (id)initWithDisabledTitle:(NSString *)t;
-- (void)disableWithTitle:(NSString *)t;
-- (void)setAnchor:(CGPoint)a;
++ (MAConfirmButton *)buttonWithTitle:(NSString *)titleString confirm:(NSString *)confirmString;
++ (MAConfirmButton *)buttonWithDisabledTitle:(NSString *)disabledString;
+- (id)initWithTitle:(NSString *)titleString confirm:(NSString *)confirmString;
+- (id)initWithDisabledTitle:(NSString *)disabledString;
+- (void)disableWithTitle:(NSString *)disabledString;
+- (void)setAnchor:(CGPoint)anchor;
 - (void)setTintColor:(UIColor *)color;
 
 @end

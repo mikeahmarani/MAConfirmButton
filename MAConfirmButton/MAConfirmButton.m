@@ -31,20 +31,20 @@
     [super dealloc];
 }
 
-+ (MAConfirmButton *)buttonWithTitle:(NSString *)t confirm:(NSString *)c{	
-	MAConfirmButton *button = [[[super alloc] initWithTitle:t confirm:c] autorelease];	
++ (MAConfirmButton *)buttonWithTitle:(NSString *)titleString confirm:(NSString *)confirmString{	
+	MAConfirmButton *button = [[[super alloc] initWithTitle:titleString confirm:confirmString] autorelease];	
 	return button;
 }
 
-+ (MAConfirmButton *)buttonWithDisabledTitle:(NSString *)t{	
-	MAConfirmButton *button = [[[super alloc] initWithDisabledTitle:t] autorelease];	
++ (MAConfirmButton *)buttonWithDisabledTitle:(NSString *)disabledString{	
+	MAConfirmButton *button = [[[super alloc] initWithDisabledTitle:disabledString] autorelease];	
 	return button;
 }
 
-- (id)initWithDisabledTitle:(NSString *)t{
+- (id)initWithDisabledTitle:(NSString *)disabledString{
 	self = [super initWithFrame:CGRectMake(300, 150, 75, 26)];
 	if(self != nil){
-		disabled = [t retain];
+		disabled = [disabledString retain];
 		
 		self.layer.needsDisplayOnBoundsChange = YES;
 		
@@ -68,12 +68,12 @@
 	return self;	
 }
 
-- (id)initWithTitle:(NSString *)t confirm:(NSString *)c{
+- (id)initWithTitle:(NSString *)titleString confirm:(NSString *)confirmString{
 	self = [super initWithFrame:CGRectMake(300, 150, 75, 26)];
 	if(self != nil){
 		
-		self.title = [t retain];
-		self.confirm = [c retain];
+		self.title = [titleString retain];
+		self.confirm = [confirmString retain];
 		
 		self.layer.needsDisplayOnBoundsChange = YES;
 		
@@ -210,8 +210,8 @@
 	[self toggle];
 }
 
-- (void)disableWithTitle:(NSString *)t{
-	self.disabled = [t retain];
+- (void)disableWithTitle:(NSString *)disabledString{
+	self.disabled = [disabledString retain];
 	[self toggle];	
 }
 

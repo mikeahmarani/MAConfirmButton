@@ -6,26 +6,26 @@ MAConfirmButton is an animated subclass of UIButton that replicates and improves
 
 h2. Usage
 
-I attempted to make this class as "drop-in" as possible since it is, after all, a subclass of UIButton.
+I attempted to make this class as "drop-in" as possible since it is, after all, a subclass of UIButton. Your project must include the **QuartzCore** framework.
 
 h3. Init
 
 <pre>
-+ (MAConfirmButton *)buttonWithTitle:(NSString *)t confirm:(NSString *)c;
-+ (MAConfirmButton *)buttonWithDisabledTitle:(NSString *)t;
++ (MAConfirmButton *)buttonWithTitle:(NSString *)disabledString confirm:(NSString *)confirmString;
++ (MAConfirmButton *)buttonWithDisabledTitle:(NSString *)disabledString;
 </pre>
 
 h3. Anchor
 
-It is important that the anchor be set. For now, the anchor is the top right.
+It is important that the anchor be set in order to position this button. Instead of using `setFrame:` after initializing the button, simply. For now, the anchor point is the **top right** and the button is always aligned right, like the AppStore.
 
 <pre>
-- (void)setAnchor:(CGPoint)a;
+- (void)setAnchor:(CGPoint)anchor;
 </pre>
 
 h3. Change State
 
 <pre>
-- (void)disableWithTitle:(NSString *)t;
+- (void)disableWithTitle:(NSString *)disabledString;
 </pre>
 
