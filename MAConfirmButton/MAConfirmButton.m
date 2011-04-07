@@ -258,16 +258,13 @@
 	[super touchesBegan:touches withEvent:event];
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
-	if(!disabled && !confirmed){
-		[self lighten];
-	}	
-	[super touchesCancelled:touches withEvent:event];
-}
-
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+	
 	if(!disabled && !confirmed){
-		if(selected){
+		if(!CGRectContainsPoint(self.frame, [[touches anyObject] locationInView:self.superview])){ //TouchUpOutside (Cancelled Touch)
+			[self lighten];
+			[super touchesCancelled:touches withEvent:event];
+		}else if(selected){
 			[self lighten];
 			confirmed = YES;
 			[cancelOverlay removeFromSuperview];
