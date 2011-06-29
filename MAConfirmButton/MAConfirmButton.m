@@ -149,7 +149,7 @@
 		[CATransaction commit];
 		
 		self.titleLabel.alpha = 1;
-		
+		[self setNeedsLayout];
 	}];
 	
 	UIColor *greenColor = [UIColor colorWithRed:0.439 green:0.741 blue:0.314 alpha:1.];
