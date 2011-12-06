@@ -10,6 +10,11 @@
 
 @class MAConfirmButtonOverlay;
 
+typedef enum {
+  MAConfirmButtonToggleAnimationLeft = 0,
+  MAConfirmButtonToggleAnimationRight = 1
+} MAConfirmButtonToggleAnimation;
+
 @interface MAConfirmButton : UIButton {
 
 @private
@@ -19,6 +24,8 @@
 	CALayer *darkenLayer;
 	UIButton *cancelOverlay;
 }
+
+@property (nonatomic, assign) MAConfirmButtonToggleAnimation toggleAnimation;
 
 + (MAConfirmButton *)buttonWithTitle:(NSString *)titleString confirm:(NSString *)confirmString;
 + (MAConfirmButton *)buttonWithDisabledTitle:(NSString *)disabledString;
