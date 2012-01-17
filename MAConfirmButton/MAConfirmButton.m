@@ -146,6 +146,9 @@
         break;
       case MAConfirmButtonToggleAnimationRight:
         break;
+      case MAConfirmButtonToggleAnimationCenter:
+        frameRect.origin.x = frameRect.origin.x - offset/2.0;
+        break;
       default:
         break;
     }
@@ -160,6 +163,9 @@
           rect.origin.x = rect.origin.x+offset;
           break;
         case MAConfirmButtonToggleAnimationRight:
+          break;
+        case MAConfirmButtonToggleAnimationCenter:
+          rect.origin.x = rect.origin.x+offset/2.0;
           break;
         default:
           break;
@@ -199,6 +205,9 @@
         rect.origin.x = rect.origin.x-offset;
         break;
       case MAConfirmButtonToggleAnimationRight:
+        break;
+      case MAConfirmButtonToggleAnimationCenter:
+        rect.origin.x = rect.origin.x-offset/2.0;
         break;
       default:
         break;
