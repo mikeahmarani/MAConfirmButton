@@ -12,7 +12,9 @@
 
 typedef enum {
   MAConfirmButtonToggleAnimationLeft = 0,
-  MAConfirmButtonToggleAnimationRight = 1
+  MAConfirmButtonToggleAnimationRight = 1,
+  MAConfirmButtonToggleAnimationCenter =2
+
 } MAConfirmButtonToggleAnimation;
 
 @interface MAConfirmButton : UIButton {
