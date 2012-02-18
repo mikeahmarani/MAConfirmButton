@@ -61,6 +61,7 @@
 		270FBCAB134BA43800EEA99B = {
 			isa = PBXGroup;
 			children = (
+				27913F48134BA46D00FBEB69 /* MAConfirmButton */,
 				270FBCC0134BA43800EEA99B /* Sample */,
 				270FBCB9134BA43800EEA99B /* Frameworks */,
 				270FBCB7134BA43800EEA99B /* Products */,
@@ -89,7 +90,6 @@
 		270FBCC0134BA43800EEA99B /* Sample */ = {
 			isa = PBXGroup;
 			children = (
-				27913F48134BA46D00FBEB69 /* MAConfirmButton */,
 				270FBCC9134BA43800EEA99B /* SampleAppDelegate.h */,
 				270FBCCA134BA43800EEA99B /* SampleAppDelegate.m */,
 				270FBCCC134BA43800EEA99B /* MainWindow.xib */,
