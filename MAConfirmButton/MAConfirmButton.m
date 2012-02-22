@@ -294,10 +294,11 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-  if(!disabled && !confirmed && self.userInteractionEnabled){
-    [self darken];
-  }
-  [super touchesBegan:touches withEvent:event];
+
+    if(!disabled && !confirmed && self.userInteractionEnabled){        
+        [self darken];
+    }
+    [super touchesBegan:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -313,12 +314,14 @@
             cancelOverlay = nil;
             [super touchesEnded:touches withEvent:event];
         }else{
-            [self lighten];			
-            self.selected = YES;		
-            cancelOverlay = [UIButton buttonWithType:UIButtonTypeCustom];
-            [cancelOverlay setFrame:CGRectMake(0, 0, 1024, 1024)];
-            [cancelOverlay addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchDown];
-            [self.superview addSubview:cancelOverlay];
+            [self lighten];		
+            self.selected = YES;            
+            if(!cancelOverlay){		                
+                cancelOverlay = [UIButton buttonWithType:UIButtonTypeCustom];
+                [cancelOverlay setFrame:CGRectMake(0, 0, 1024, 1024)];
+                [cancelOverlay addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchDown];
+                [self.superview addSubview:cancelOverlay];                
+            }
             [self.superview bringSubviewToFront:self];
         }
     }
