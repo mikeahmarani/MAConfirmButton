@@ -413,7 +413,7 @@ static NSLock *crayolaNameCacheLock;
 	int bInt = (targetHex >> 0) & 0x0ff;
 	
 	float bestScore = MAXFLOAT;
-	const char* bestPos = nil;
+	const char* bestPos = aColorDatabase;
 	
 	// Walk the name db string looking for the name with closest match
 	for (const char* p = aColorDatabase; (p = strchr(p, '#')); ++p) {
@@ -435,9 +435,14 @@ static NSLock *crayolaNameCacheLock;
 	
 	// bestPos now points to the # following the best name seen
 	// Backup to the start of the name and return it
-	const char* name;
-	for (name = bestPos-1; *name != ','; --name)
-		;
+    
+	const char* name = bestPos-1;
+    
+    while (*name != ',')
+    {
+        --name;
+    }
+    
 	++name;
 	NSString *result = [[[NSString alloc] initWithBytes:name length:bestPos - name encoding:NSUTF8StringEncoding] autorelease];
 	
