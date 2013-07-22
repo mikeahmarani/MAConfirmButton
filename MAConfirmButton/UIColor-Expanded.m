@@ -413,7 +413,7 @@ static NSLock *crayolaNameCacheLock;
 	int bInt = (targetHex >> 0) & 0x0ff;
 	
 	float bestScore = MAXFLOAT;
-	const char* bestPos = nil;
+	const char* bestPos = aColorDatabase;
 	
 	// Walk the name db string looking for the name with closest match
 	for (const char* p = aColorDatabase; (p = strchr(p, '#')); ++p) {
@@ -435,9 +435,14 @@ static NSLock *crayolaNameCacheLock;
 	
 	// bestPos now points to the # following the best name seen
 	// Backup to the start of the name and return it
-	const char* name;
-	for (name = bestPos-1; *name != ','; --name)
-		;
+    
+	const char* name = bestPos-1;
+    
+    while (*name != ',')
+    {
+        --name;
+    }
+    
 	++name;
 	NSString *result = [[[NSString alloc] initWithBytes:name length:bestPos - name encoding:NSUTF8StringEncoding] autorelease];
 	
@@ -553,7 +558,7 @@ static NSLock *crayolaNameCacheLock;
 #pragma mark Color Space Conversions
 
 + (void)hue:(CGFloat)h saturation:(CGFloat)s brightness:(CGFloat)v toRed:(CGFloat *)pR green:(CGFloat *)pG blue:(CGFloat *)pB {
-	CGFloat r,g,b;
+	CGFloat r = 0.0f, g = 0.0f, b = 0.0f;
 	
 	// From Foley and Van Dam
 	
@@ -740,7 +745,7 @@ static const char *crayolaNameDB = ","
 + (void)populateColorNameCache {
 	NSAssert(colorNameCache == nil, @"+pouplateColorNameCache was called when colorNameCache was not nil");
 	NSMutableDictionary *cache = [NSMutableDictionary dictionary];
-	for (const char* entry = colorNameDB; entry = strchr(entry, ','); ) {
+	for (const char* entry = colorNameDB; (entry = strchr(entry, ',')); ) {
 		
 		// Step forward to the start of the name
 		++entry;
@@ -767,7 +772,7 @@ static const char *crayolaNameDB = ","
 + (void)populateCrayolaNameCache {
 	NSAssert(crayolaNameCache == nil, @"+pouplateCrayolaNameCache was called when crayolaNameCache was not nil");
 	NSMutableDictionary *cache = [NSMutableDictionary dictionary];
-	for (const char* entry = crayolaNameDB; entry = strchr(entry, ','); ) {
+	for (const char* entry = crayolaNameDB; (entry = strchr(entry, ',')); ) {
 		
 		// Step forward to the start of the name
 		++entry;
